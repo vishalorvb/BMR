@@ -32,3 +32,7 @@ def loginuser(request):
         else:
             return render(request, 'Home/login.html',{"error":"Invalid Credentials"})
     return render(request, 'Home/login.html')
+
+def userlogout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
