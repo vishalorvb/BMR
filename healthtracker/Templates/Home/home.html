@@ -1,0 +1,25 @@
+{% extends "../Home/nav.html" %}
+
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+
+<div class="container">
+    <div class="row justify-content-center">
+        {% for food in foods %}
+        <div class="col-8">
+            <div class="food-item">
+                <h2>{{food.name}}</h2>
+                <p>Description:{{food.description}}</p>
+                <p><span class="label">Protein:</span> <span class="protein">{{food.protein}}g</span></p>
+                <p><span class="label">Fat:</span> <span class="fat">{{food.fat}}g</span></p>
+                <p><span class="label">Carbs:</span> <span class="carbs">{{food.carbs}}g</span></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -4,7 +4,7 @@ from django.db import models
 
 class food(models.Model):
     name = models.CharField(max_length=25)
-    description = models.CharField(max_length=25)
+    description = models.CharField(max_length=150)
     protein = models.FloatField()
     carbs = models.FloatField()
     fat = models.FloatField()
