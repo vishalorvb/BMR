@@ -74,7 +74,8 @@ function calculateCalories() {
             const protein = parseFloat(foodItem.querySelector('.protein').textContent);
             const carbs = parseFloat(foodItem.querySelector('.carbs').textContent);
             const fat = parseFloat(foodItem.querySelector('.fat').textContent);
-            const calories = protein * 4 + carbs * 4 + fat * 9;
+            // const calories = protein * 4 + carbs * 4 + fat * 9;
+            const calories = parseFloat(foodItem.querySelector('.calorie').textContent);
 
             // Update totals
             totalProtein += protein;

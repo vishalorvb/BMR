@@ -9,6 +9,7 @@ class food(models.Model):
     protein = models.FloatField()
     carbs = models.FloatField()
     fat = models.FloatField()
+    calorie = models.FloatField(default=0)
     def __str__(self):
         return self.name
     
