@@ -23,10 +23,10 @@ def saveCalorie(request):
         fat = json_data["fat"]
         cal = json_data["calorie"]
         tracker = calorieTracker(
-        protein=100.0,
-        carbs=150.0,
-        fat=50.0,
-        calorie=2000.0,
+        protein=p,
+        carbs=carbs,
+        fat=fat,
+        calorie=cal,
         user=request.user
         )
         tracker.save()
