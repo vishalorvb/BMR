@@ -15,9 +15,16 @@
                 <p><span class="label">Protein:</span> <span class="protein">{{food.protein}}g</span></p>
                 <p><span class="label">Fat:</span> <span class="fat">{{food.fat}}g</span></p>
                 <p><span class="label">Carbs:</span> <span class="carbs">{{food.carbs}}g</span></p>
+                <input type="checkbox" />
             </div>
         </div>
         {% endfor %}
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <button type="button" class="btn btn-info">Calculate calories</button>
+            </div>
+        </div>
+
     </div>
 </div>
 

@@ -31,3 +31,7 @@
   .food-item .carbs {
     color: blue;
   }
+
+  .food-item .calorie {
+    color: rgb(226, 175, 9);
+  }

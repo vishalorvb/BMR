@@ -5,7 +5,6 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 def home(request):
     foods = food.objects.all()
-    print(foods)
     return render(request, 'Home/home.html',{"foods":foods})
 
 def register(request):

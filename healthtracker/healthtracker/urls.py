@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('bmr/', include('bmr.urls')),
     path('tdee/', include('tdee.urls')),
+    path('tracker/', include('tracker.urls')),
 ]

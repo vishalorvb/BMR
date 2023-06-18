@@ -1,5 +1,6 @@
 from django.db import models
-
+from datetime import datetime
+from django.contrib.auth.models import User
 # Create your models here.
 
 class food(models.Model):
@@ -8,7 +9,14 @@ class food(models.Model):
     protein = models.FloatField()
     carbs = models.FloatField()
     fat = models.FloatField()
-    
     def __str__(self):
         return self.name
+    
+class calorieTracker(models.Model):
+    date = models.DateField(default=datetime.now)
+    protein = models.FloatField()
+    carbs = models.FloatField()
+    fat = models.FloatField()
+    calorie = models.FloatField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
