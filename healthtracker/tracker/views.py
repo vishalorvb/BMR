@@ -1,18 +1,34 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from .models import calorieTracker
-# Create your views here.
+import json
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
+# Create your views here.
+@login_required(login_url="/login")
 def profile(request):
     value = calorieTracker.objects.filter(user=request.user.id)
     print(value)
     return render(request, 'tracker/track.html',{"value":value})
 
+
+@login_required(login_url="/login")
 @csrf_exempt   
 def saveCalorie(request):
-    print("called")
-    if request.method == 'POST': 
+    if request.method == 'POST':
         json_data = json.loads(request.body)
-        print(json_data)
+        p = json_data["protein"]
+        carbs = json_data["carbs"]
+        fat = json_data["fat"]
+        cal = json_data["calorie"]
+        tracker = calorieTracker(
+        protein=100.0,
+        carbs=150.0,
+        fat=50.0,
+        calorie=2000.0,
+        user=request.user
+        )
+        tracker.save()
         response_data = {'message': 'JSON data processed successfully'}
         return JsonResponse(response_data)

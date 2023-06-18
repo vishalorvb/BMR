@@ -39,6 +39,21 @@ function calculateTdee() {
 }
 
 
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(name + '=')) {
+                cookieValue = cookie.substring(name.length + 1);
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
 // Function to calculate total protein, carbs, fat, and calories
 function calculateCalories() {
     // Get all food items
@@ -68,14 +83,18 @@ function calculateCalories() {
             totalCalories += calories;
         }
     });
-    const url = "tracker/saveCalorie";
+    const url = "/tracker/saveCalorie";
+
+
+
+
     const data = {
         protein: totalProtein,
         carbs: totalCarbs,
         fat: totalFat,
         calorie: totalCalories
     };
-    
+    console.log(data)
 
     // Display the totals
     console.log('Total Protein:', totalProtein.toFixed(1), 'g');
@@ -84,13 +103,17 @@ function calculateCalories() {
     console.log('Total Calories:', totalCalories.toFixed(1));
     fetch(url, {
         method: "POST",
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
     })
         .then(response => response.json())
         .then(data => {
             console.log("Response:", data);
+            if(data.message == "JSON data processed successfully"){
+                window.location.assign("/tracker");
+            }
         })
         .catch(error => {
+            console.log(error)
         });
 }
 

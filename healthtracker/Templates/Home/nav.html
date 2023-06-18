@@ -52,8 +52,8 @@
         <li><a href="/">Home</a></li>
         <li><a href="/bmr">BMR</a></li>
         <li><a href="/tdee">TDEE</a></li>
-        <li><a href="/tracker">Profile</a></li>
         {% if request.user.is_authenticated %}
+        <li><a href="/tracker">Profile</a></li>
         <li><a href="/logout">Logout</a></li>
         {% else %}
         <li><a href="/register">Register</a></li>
