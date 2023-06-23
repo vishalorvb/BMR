@@ -17,6 +17,9 @@ def profile(request):
 @csrf_exempt   
 def saveCalorie(request):
     if request.method == 'POST':
+        user_id = request.user.id
+        today = date.today()
+        calorieTracker.objects.filter(user_id=user_id).exclude(date=today).delete()
         json_data = json.loads(request.body)
         p = json_data["protein"]
         carbs = json_data["carbs"]
