@@ -4,7 +4,7 @@ from .models import calorieTracker
 import json
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
-
+from datetime import datetime
 # Create your views here.
 @login_required(login_url="/login")
 def profile(request):
@@ -18,7 +18,7 @@ def profile(request):
 def saveCalorie(request):
     if request.method == 'POST':
         user_id = request.user.id
-        today = date.today()
+        today =datetime.now()
         calorieTracker.objects.filter(user_id=user_id).exclude(date=today).delete()
         json_data = json.loads(request.body)
         p = json_data["protein"]
